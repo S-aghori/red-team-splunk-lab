@@ -197,9 +197,9 @@ Read the complete technical article on Medium:
 
 ## 👤 Author
 
-**Shivam Singh Sengar (aghori-21)**
+**Shivam Singh Sengar (S-aghori)**
 
-- GitHub: [github.com/aghori-21](https://github.com/aghori-21)
+- GitHub: [github.com/S-aghori](https://github.com/S-aghori)
 - LinkedIn: [Shivam Singh Sengar](https://linkedin.com/in/shivamsinghsengar)
 
 ---
