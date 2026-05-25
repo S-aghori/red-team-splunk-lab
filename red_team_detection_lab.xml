@@ -1,0 +1,97 @@
+<dashboard version="1.1" theme="dark">
+  <label>Red Team Attack Detection Lab</label>
+  <row>
+    <panel>
+      <title>Attack Timeline</title>
+      <chart>
+        <search>
+          <query>index=main host=DESKTOP-EVMUNVQ
+| timechart count by EventCode</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Failed Logon Attempts</title>
+        <search>
+          <query>index=main host=DESKTOP-EVMUNVQ EventCode=4625
+| timechart count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Top Event Codes</title>
+        <search>
+          <query>index=main host=DESKTOP-EVMUNVQ
+| stats count by EventCode
+| sort -count
+| head 10</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Network Connections</title>
+        <search>
+          <query>index=main host=DESKTOP-EVMUNVQ EventCode=5156
+| stats count by Destination_Address Destination_Port
+| sort -count
+| head 10</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Process Creation Activity</title>
+        <search>
+          <query>index=main host=DESKTOP-EVMUNVQ EventCode=4688
+| stats count by Creator_Process_Name
+| sort -count
+| head 10</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">bar</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <single>
+        <title>Total Events Counter</title>
+        <search>
+          <query>index=main host=DESKTOP-EVMUNVQ
+| stats count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+  </row>
+</dashboard>
